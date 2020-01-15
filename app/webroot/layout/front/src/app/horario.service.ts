@@ -11,12 +11,12 @@ export class HorarioService {
 
   constructor(private http: HttpClient) { }
 
-  getHours(id: null, mes: null) {
+  getHours(mes: null) {
     let retorno
-    if (id == null) {
+    if (mes == null) {
       retorno = this.http.get<Horario[]>("http://omega.localhost/hours/");
     } else {
-      retorno = this.http.get<Horario[]>("http://omega.localhost/hours/index/"+id);
+      retorno = this.http.get<Horario[]>("http://omega.localhost/hours/index/"+mes);
     }
     return retorno;
   }

@@ -9,8 +9,10 @@ class HoursController extends AppController {
         $this->response->header('Access-Control-Allow-Origin', '*');
     }
 
-    public function index($id = null, $month = null)
+    public function index($m = null)
     { 
+        $hours = array();
+        $conditions = array();
         $this->layout = 'ajax';
         $this->autoRender = false;
         $data = new DateTime();
@@ -18,6 +20,15 @@ class HoursController extends AppController {
         $dateToChange = '15-01-2020 13:210202';
         $month = strftime('%B');
         $actualMonth = $this->getMonth($month);
+        if ($m !== null) {
+            $conditions['Hour.dia LIKE'] = '%' . '-' . $m . '-' . '%';
+            $hours = $this->Hour->find('all', array(
+                'conditions' => $conditions
+            ));
+        } else {
+            $hours = $this->Hour->find('all');
+        }
+
         if ($dateToChange == $dateToday) {
             $days = array();
             for ($i = 0; $i <= 31; $i++) {
@@ -34,7 +45,6 @@ class HoursController extends AppController {
                 $this->Hour->save($save);                
             }
         }
-        $hours = $this->Hour->find('all');
         $a = array();
         foreach ($hours as $h) {
             $a[] = $h["Hour"];

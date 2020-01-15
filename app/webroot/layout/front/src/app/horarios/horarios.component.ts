@@ -68,6 +68,21 @@ export class HorariosComponent implements OnInit {
     event.target.value = this.timeToChange
   }
 
+  onSubmit(f: NgForm) {
+    console.log(f.value.mes);
+    this._horarioService.getHours(f.value.mes).subscribe(
+      data => {
+        this.horario = data;
+        this.dataSource = new MatTableDataSource<Horario>(data);
+        this.dataSource.paginator = this.paginator;
+        this.selection = new SelectionModel<Horario>(true, []);
+      },
+      error => {
+        console.log(error)
+      }
+    )
+  }
+
 }
 
 
