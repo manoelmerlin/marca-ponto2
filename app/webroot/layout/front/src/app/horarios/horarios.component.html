@@ -15,7 +15,6 @@
                 <div class="ml-2">Dias restantes</div>
                 <div style="height: 1px;" class="ml-2 my-1 border border-info bg-info p-2"></div>
             </div>
-        
         </div>
     </div>
     <div class="col-12 shadow-sm rounded-bottom">
@@ -53,7 +52,7 @@
     <table class="center" mat-table [dataSource]="dataSource">
         <ng-container matColumnDef="dia">
             <th mat-header-cell *matHeaderCellDef>Dia</th>
-            <td class="text-danger" mat-cell *matCellDef="let element"> {{element.dia}} </td>
+            <td class="text-danger" mat-cell *matCellDef="let element"> <a  [ngClass]="{'text-warning': element.dia < currentTime, 'text-success': element.dia == currentTime, 'text-info': element.dia > currentTime}">{{element.dia}}</a> </td>
         </ng-container>
 
         <ng-container matColumnDef="horario_chegada">

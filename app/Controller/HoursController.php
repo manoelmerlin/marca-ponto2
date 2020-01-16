@@ -17,7 +17,7 @@ class HoursController extends AppController {
         $this->autoRender = false;
         $data = new DateTime();
         $dateToday =  $data->format('d-m-Y H:i');
-        $dateToChange = '15-01-2020 13:210202';
+        $dateToChange = '15-01-2020 22:34554';
         $month = strftime('%B');
         $actualMonth = $this->getMonth($month);
         if ($m !== null) {

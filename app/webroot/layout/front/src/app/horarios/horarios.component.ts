@@ -9,7 +9,6 @@ import { MatSort} from '@angular/material';
 import {SelectionModel} from '@angular/cdk/collections';
 import { EventEmitter } from 'events';
 
-
 @Component({
   selector: 'app-horarios',
   templateUrl: './horarios.component.html',
@@ -17,6 +16,7 @@ import { EventEmitter } from 'events';
 })
 export class HorariosComponent implements OnInit {
 
+  public currentDate = new Date();
   public horario: Horario;
   public dataSource;
   public selection;
@@ -25,10 +25,7 @@ export class HorariosComponent implements OnInit {
   public dataToChange;
   public timeToChange =  this.now.getHours() + ":" + (this.now.getMinutes() < 10 ? '0' + this.now.getMinutes() : this.now.getMinutes()) + ":" + this.now.getSeconds();
   @Input() horario_chegada: string;
-
   ELEMENT_DATA: Horario[] = [this.horario];
-
-
   displayedColumns: string[] = ['dia', 'horario_chegada', 'saida_intervalo', 'chegada_intervalo', 'horario_saida', 'justificativa', 'editar'];
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @Output('ngModelChange') update = new EventEmitter();
@@ -39,15 +36,17 @@ export class HorariosComponent implements OnInit {
   addForm: FormGroup;
 
   ngOnInit() {
-    this._horarioService.getHours(null, null).subscribe(
+    this._horarioService.getHours(null).subscribe(
       data => {
-        this.horario = data;
         this.dataSource = new MatTableDataSource<Horario>(data);
         this.dataSource.paginator = this.paginator;
         this.selection = new SelectionModel<Horario>(true, []);
       }
     )
-    this.currentTime = this.now.getHours() + ":" + this.now.getMinutes() + ":" + this.now.getSeconds();
+    this.currentTime = this.RetornaDataHoraAtual().toString();
+    console.log(this.currentTime);
+
+
   }
 
   rowData(selectedItem: any) {
@@ -81,6 +80,12 @@ export class HorariosComponent implements OnInit {
         console.log(error)
       }
     )
+  }
+
+  RetornaDataHoraAtual(){
+    var dNow = new Date();
+    var localdate = (dNow.getMonth()+1 < 10) ? dNow.getDate() + '-' + '0' +(dNow.getMonth()+1) + '-' + dNow.getFullYear() : dNow.getDate() + '-' + (dNow.getMonth()+1) + '-' + dNow.getFullYear();
+    return localdate;
   }
 
 }
