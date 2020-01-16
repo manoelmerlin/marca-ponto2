@@ -8,6 +8,8 @@ import { Horario } from '../horario';
 import { MatSort} from '@angular/material';
 import {SelectionModel} from '@angular/cdk/collections';
 import { EventEmitter } from 'events';
+import * as moment from 'moment';
+import 'moment/locale/pt-br';
 
 @Component({
   selector: 'app-horarios',
@@ -41,12 +43,10 @@ export class HorariosComponent implements OnInit {
         this.dataSource = new MatTableDataSource<Horario>(data);
         this.dataSource.paginator = this.paginator;
         this.selection = new SelectionModel<Horario>(true, []);
+        this.horario = data;
       }
     )
-    this.currentTime = this.RetornaDataHoraAtual().toString();
-    console.log(this.currentTime);
-
-
+    this.currentTime = this.retornaDataHoraAtual().toString();
   }
 
   rowData(selectedItem: any) {
@@ -82,12 +82,12 @@ export class HorariosComponent implements OnInit {
     )
   }
 
-  RetornaDataHoraAtual(){
+  retornaDataHoraAtual(){
     var dNow = new Date();
     var localdate = (dNow.getMonth()+1 < 10) ? dNow.getDate() + '-' + '0' +(dNow.getMonth()+1) + '-' + dNow.getFullYear() : dNow.getDate() + '-' + (dNow.getMonth()+1) + '-' + dNow.getFullYear();
     return localdate;
   }
-
+  
 }
 
 

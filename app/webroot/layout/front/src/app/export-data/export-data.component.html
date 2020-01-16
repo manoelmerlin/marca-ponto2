@@ -1,0 +1,45 @@
+<div class="col-sm-12">  
+   <button (click)="ExportTOExcel()" class="btn btn-success">ExportTOExcel</button>
+</div>  
+
+<table id="excel-table" cellspacing="0">
+	<colgroup width="73"></colgroup>
+	<colgroup width="80"></colgroup>
+	<colgroup width="84"></colgroup>
+	<colgroup width="80"></colgroup>
+	<colgroup width="87"></colgroup>
+	<colgroup width="479"></colgroup>
+	<tr>
+		<td style="border-top: 2px solid #000000; border-bottom: 2px solid #000000; border-left: 2px solid #000000; border-right: 2px solid #000000" colspan=6 height="21" align="left" valign=bottom><b><font color="#000000">EMPREGADOR: SAMPLE MED SERVIÇOS MEDICOS S/S LTDA</font></b></td>
+   </tr>
+	<tr>
+		<td style="border-top: 2px solid #000000; border-bottom: 2px solid #000000; border-left: 2px solid #000000; border-right: 2px solid #000000" colspan=6 height="21" align="left" valign=bottom><b><font color="#000000">ENDEREÇO: AV ANGELICA 2355 CJ 62/ 2491 CJ 56/57</font></b></td>
+   </tr>
+	<tr>
+		<td style="border-top: 2px solid #000000; border-bottom: 2px solid #000000; border-left: 2px solid #000000; border-right: 2px solid #000000" colspan=6 height="21" align="left" valign=bottom><b><font color="#000000">ESTAGIÁRIO (A): MANOEL MERLIN NETO</font></b></td>
+		</tr>
+	<tr>
+		<td style="border-top: 2px solid #000000; border-bottom: 2px solid #000000; border-left: 2px solid #000000; border-right: 2px solid #000000" colspan=5 height="21" align="left" valign=bottom><b><font color="#000000">FUNÇÃO: ESTAGIÁRIO</font></b></td>
+		<td style="border-top: 2px solid #000000; border-bottom: 2px solid #000000; border-left: 2px solid #000000; border-right: 2px solid #000000" align="left" valign=bottom><b><font color="#000000">HORÁRIO DE TRABALHO:  SEG/SEX 12:40 AS 19:00</font></b></td>
+	</tr>
+	<tr>
+		<td style="border-top: 2px solid #000000; border-bottom: 2px solid #000000; border-left: 2px solid #000000; border-right: 2px solid #000000" rowspan=2 height="42" align="center" valign=bottom><b><font color="#000000">DIAS DO MÊS</font></b></td>
+		<td style="border-top: 2px solid #000000; border-bottom: 2px solid #000000; border-left: 2px solid #000000; border-right: 2px solid #000000" rowspan=2 align="center" valign=bottom><b><font color="#000000">ENTRADA <br>MANHÃ</font></b></td>
+		<td style="border-top: 2px solid #000000; border-bottom: 2px solid #000000; border-left: 2px solid #000000; border-right: 2px solid #000000" colspan=2 align="center" valign=bottom><b><font color="#000000">ALMOÇO</font></b></td>
+		<td style="border-top: 2px solid #000000; border-bottom: 2px solid #000000; border-left: 2px solid #000000; border-right: 2px solid #000000" rowspan=2 align="center" valign=bottom><b><font color="#000000">SAÍDA<br>TARDE</font></b></td>
+		<td style="border-top: 2px solid #000000; border-bottom: 2px solid #000000; border-left: 2px solid #000000; border-right: 2px solid #000000" rowspan=2 align="center" valign=bottom><b><font color="#000000">JUSTIFICATIVA PARA HORAS REALIZADAS FORA DO EXPEDIENTE DE TRABALHO</font></b></td>
+	</tr>
+	<tr>
+		<td style="border-top: 2px solid #000000; border-bottom: 2px solid #000000; border-left: 2px solid #000000; border-right: 2px solid #000000" align="center" valign=bottom><b><font color="#000000">SAÍDA</font></b></td>
+		<td style="border-top: 2px solid #000000; border-bottom: 2px solid #000000; border-left: 2px solid #000000; border-right: 2px solid #000000" align="center" valign=bottom><b><font color="#000000">ENTRADA</font></b></td>
+   </tr>
+	<tr *ngFor="let h of horario">
+      <td>{{h.day}}</td>
+		<td>{{h.horario_chegada}}</td>
+		<td>{{h.saida_intervalo}}</td>
+		<td>{{h.chegada_intervalo}}</td>
+		<td>{{h.horario_saida}}</td>
+		<td>-</td>
+   </tr>
+</table>
+

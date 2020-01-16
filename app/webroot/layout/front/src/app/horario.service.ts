@@ -14,14 +14,18 @@ export class HorarioService {
   getHours(mes: null) {
     let retorno
     if (mes == null) {
-      retorno = this.http.get<Horario[]>("http://localhost/marca-ponto2/hours");
+      retorno = this.http.get<Horario[]>("http://omega.localhost/hours/");
     } else {
-      retorno = this.http.get<Horario[]>("http://localhost/marca-ponto2/hours/index"+mes);
+      retorno = this.http.get<Horario[]>("http://omega.localhost/hours/index/"+mes);
     }
     return retorno;
   }
 
   editHours(horario) {
-    return this.http.post<Horario[]>("http://localhost/marca-ponto2/hours/edit.json", horario);
+    return this.http.post<Horario[]>("http://omega.localhost/hours/edit.json", horario);
+  }
+
+  dataToExport(mes) {
+    return this.http.get<Horario[]>("http://omega.localhost/hours/exportToExcel/"+mes);
   }
 }

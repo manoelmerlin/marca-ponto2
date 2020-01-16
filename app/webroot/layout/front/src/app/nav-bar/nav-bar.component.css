@@ -1,0 +1,20 @@
+.example-icon {
+    padding: 0 14px;
+  }
+  
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+.nav-color {
+    background-color: #F5F5F5;
+}
+
+.nav-link {
+    color: black !important;
+    font-size: 19px;
+}
+
+a:hover {
+    color: #673ab7 !important;
+}
